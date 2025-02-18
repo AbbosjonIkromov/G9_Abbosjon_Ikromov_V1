@@ -1,0 +1,33 @@
+ 1.
+DataBase bilan bizni Codimizni EF Core bo'g'lab turuvchi kuprik sifatida iwlaydi
+EF core asosiy iwni DbContext dan boris olgan class ustida bajaradi
+Ef core uni baza bilan iwlatadi uni undagi harbir uzgariwni ni seradi chengetrakerga oladi
+Asosiy Bridge boglovci kuprik
+
+2.
+Eager Loading - tezkor yuklaw uzi bilan boglangan malumotlarni include(), ThenInclude() orqali yuklaydi
+yuklaw bitta surov orqali amalga owiriladi, Malumotlar kup joinda iborat bulmasa columnlarda katta matnlar 
+va binar malumotlar saqlanmasa Eager loading dan foygalaniw tafsiya etiladi
+
+Lazy Loading - Dangasa yuklaw u asosiy malumotarni yuklarydi, va qachonga unga boglangan malumotlar suralganda
+ularning har biri uchun surov yuboradi bu (N + 1) problemni keltirib ciqariwi mumkin har malumot ucun alohida malumot
+yuboradi bu. Malumotlar aynan kerak bulganda yuklaniwi kerak bulsa Lazy loading dan foydalaniw tafsiya etiladi
+
+Explicit Loading - u ham biroz Lazy loading ga uxwab ketadi, u ham birinci navbatda asosiy malumotlarni yuklaydi 
+sung biz kerakli malumotarni qulda suraymiz Entry() Collaction() || Reference() Load() orqali malumotlar load qilinidi
+yani yuklanadi Explicit loading katta malumotlar bilan iwlaganda yoki Eager loading ga malumotlar kupayib ketganda, faqat kerakli malumotlar 
+kerak bulsa iwlatiladi
+
+3.
+Migratisiya - Migratsiya migratsiya asosan dbconextda uzgariwlar bulsa uni qulda yozmaslik ucun iwlatiladi 
+u qulay har bir classlardagi uzgariwlarni db ga moslab yozadi unlarni yangilaydi uciradi
+migratisiyada foydalanmasak uzgariwlar bulsa dastur xato beradi wu sabab Migratsiya ORM ning kucli ficalaridan biri
+
+4.
+Single() - LINQ da Single agar qidirilayotgan obyect yagona bulsa uni qaytaradi
+agar obyecy bulmasa exception otadi, agar obyecy bittadan kup bulsa ham exception otadi
+
+SingleOrDefault() - LINQ da SingleOrDefault agar qidirilayotgan  obyect yagona bulsa uni qaytaradi
+agar obyecy bulmasa null qaytaradi , agar obyect ikkita bulsa exception otadi
+
+odatda SingleOrDefault() - kuproq iwlatiladi
