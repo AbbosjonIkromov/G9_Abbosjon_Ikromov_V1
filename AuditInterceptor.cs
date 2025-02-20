@@ -23,7 +23,7 @@ namespace ModulExam5
 
             var entries = context.ChangeTracker
                 .Entries()
-                .Where(r => r.State is IAuditable);
+                .Where(r => r.Entity is IAuditable);
 
             foreach (var entry in entries)
             {

@@ -35,16 +35,16 @@ namespace ModulExam5.Services
             var product = await _context.Products.FindAsync(id);
             if(product is null) return;
 
-            var products = await _context.Products
-                
-                .Where(r => r.OrderDetails.Any(p => p.ProductId == id))
-                .ToListAsync();
+            var products = _context.OrderDetails
+                .Where(r => r.ProductId == id)
+                .ToList();
 
             if (products.Count == 0)
             {
                 _context.Products.Remove(product);
                 _context.SaveChanges();
             }
+
 
         }
 

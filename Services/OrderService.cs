@@ -26,10 +26,11 @@ namespace ModulExam5.Services
 
         public async Task<decimal> GetOrderTotal(int orderId)
         {
-            var order = await _context.OrderDetails.FindAsync(orderId);
-            if (order is null) return 0;
+            var quantity = _context.OrderDetails.FirstOrDefault(r => r.OrderId == orderId).Quantity;
 
-            
+            var temp = _context.Products
+                .Include(r => r.OrderDetails)
+                .ToList();
 
             return 0;
         }
